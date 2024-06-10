@@ -1,27 +1,27 @@
 .calculator-box {
     border: 1px solid black;
-    width: 105px;
-}
-
-.btn {
-    border: 1px solid blue;
-    flex: 0 1 auto;
-    height: 33px;
-    width: 33px;
+    width: 208px;
+    flex-direction: column;
 }
 
 .flex-container {
     display: flex
 }
 
-.flex-container.calculator-box {
-    flex-direction: column;
+.btn {
+    border: 1px solid blue;
+    height: 50px;
+    width: 50px;
 }
 
-.flex-container.buttons {
-    flex-wrap: wrap;
-    gap: 1px;
-    justify-content: space-evenly;
+.left {
+    display: flex;
+    flex-direction: column;
+    width: 156px;
+}
+
+.top-row,.bottom-row {
+    width: 156px;
 }
 
 .nums {
@@ -32,5 +32,25 @@
 .display {
     height: 25px;
     flex: 1 1 auto;
-    border: 1px solid green;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.ops {
+    flex-direction: column;
+    width: 50px;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+.zero {
+    flex: 2 1 auto;
+    width: 103px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

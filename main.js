@@ -32,9 +32,12 @@ console.log(operate(1, 2, "divide"));
 const nums = document.querySelector(".nums");
 for (let i = 0; i < 9; i++) {
     const btn = document.createElement("div");
+    const num = document.createElement("p");
     btn.classList.add("btn");
+    btn.classList.add("center");
     nums.appendChild(btn);
-    if (i < 3) btn.textContent = i + 7;
-    if (i < 6 && i >= 3) btn.textContent = i + 1;
-    if (i < 9 && i >= 6) btn.textContent = i - 5;
+    btn.appendChild(num);
+    if (i < 3) num.textContent = i + 7;
+    if (i < 6 && i >= 3) num.textContent = i + 1;
+    if (i < 9 && i >= 6) num.textContent = i - 5;
 }
