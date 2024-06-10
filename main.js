@@ -34,4 +34,7 @@ for (let i = 0; i < 9; i++) {
     const btn = document.createElement("div");
     btn.classList.add("btn");
     nums.appendChild(btn);
+    if (i < 3) btn.textContent = i + 7;
+    if (i < 6 && i >= 3) btn.textContent = i + 1;
+    if (i < 9 && i >= 6) btn.textContent = i - 5;
 }
