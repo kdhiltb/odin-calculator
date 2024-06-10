@@ -1,13 +1,13 @@
 .calculator-box {
     border: 1px solid black;
-    width: 100px;
+    width: 105px;
 }
 
 .btn {
     border: 1px solid blue;
     flex: 0 1 auto;
-    height: 23px;
-    width: 22px;
+    height: 33px;
+    width: 33px;
 }
 
 .flex-container {
@@ -24,12 +24,12 @@
     justify-content: space-evenly;
 }
 
-.zero {
-    flex: 0 1 48px;
+.nums {
+    flex: 1 1 auto;
+    flex-wrap: wrap;
 }
 
 .display {
-    width: 98px;
     height: 25px;
     flex: 1 1 auto;
     border: 1px solid green;

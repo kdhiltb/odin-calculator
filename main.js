@@ -29,10 +29,9 @@ function operate(first, second, operator) {
 console.log(operate(1, 2, "divide"));
 
 
-const buttons = document.querySelector(".buttons");
-for (let i = 0; i < 19; i++) {
+const nums = document.querySelector(".nums");
+for (let i = 0; i < 9; i++) {
     const btn = document.createElement("div");
     btn.classList.add("btn");
-    buttons.appendChild(btn);
-    if (i === 16) btn.classList.add("zero");
+    nums.appendChild(btn);
 }
