@@ -1,5 +1,34 @@
 .calculator-box {
+    border: 1px solid green;
+    width: 100px;
+}
+
+.btn {
+    border: 1px solid blue;
+    flex: 0 1 auto;
+    height: 23px;
+    width: 23px;
+}
+
+.flex-container {
+    display: flex
+}
+
+.flex-container.calculator-box {
+    flex-direction: column;
+}
+
+.flex-container.buttons {
+    flex-wrap: wrap;
+}
+
+.zero {
+    flex: 1 1 auto;
+}
+
+.display {
+    width: 98px;
+    height: 25px;
+    flex: 1 1 auto;
     border: 1px solid black;
-    height: 300px;
-    width: 200px;
 }
