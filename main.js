@@ -56,6 +56,7 @@ function updateDisplay(btnClick, num, eval) {
         }
     } else {
         display.textContent = num;
+        return num;
     }
 
 }
@@ -67,12 +68,18 @@ const display = document.querySelector(".display");
 let eval = {};
 btns.forEach((btn) => btn.addEventListener("click", function (e) {
     let btnClick = e.target.textContent;
+    let valToUpdate;
+    if(displayVal.operator === null) {
+        valToUpdate = "first";
+    } else {
+        valToUpdate = "second";
+    }
     if (btn.matches(".num")) {
         eval.type = "num";
         if (displayVal.operator === null) {
-            displayVal.first = updateDisplay(btnClick, displayVal.first, eval);
+            displayVal[valToUpdate] = updateDisplay(btnClick, displayVal.first, eval);
         } else {
-            displayVal.second = updateDisplay(btnClick, displayVal.second, eval);
+            displayVal[valToUpdate] = updateDisplay(btnClick, displayVal.second, eval);
         }
     } else if (btn.matches(".op")) {
         if (!displayVal.second) {
@@ -87,19 +94,20 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
                 displayVal.second = displayVal.first;
             }
             displayVal.first = operate(displayVal.first, displayVal.second, displayVal.operator);
-                console.log("Result: " + displayVal.first);
-                console.log('debug' + btnClick);
-                console.log('debug' + displayVal.first);
-                console.log('debug' + eval.type);
-                updateDisplay(btnClick, displayVal.first, eval.type);
-                displayVal.second = null;
-                displayVal.operator = null;
+            updateDisplay(btnClick, displayVal.first, eval);
+            displayVal.second = null;
+            displayVal.operator = null;
         }
     } else if (btn.matches(".clear")) {
         eval.status = false;
         eval.type = null;
         resetDisplayVal();
         updateDisplay(0, displayVal.first, eval);
+    } else if (btn.matches(".negate")) {
+        initEval = eval;
+        eval.type = "equals"
+        displayVal[valToUpdate] = updateDisplay(btnClick, displayVal[valToUpdate] * -1, eval);
+        eval = initEval;
     }
     console.log("Button: " + btnClick);
     console.log('First: ' + displayVal.first);
