@@ -75,8 +75,10 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
             displayVal.second = updateDisplay(btnClick, displayVal.second, eval);
         }
     } else if (btn.matches(".op")) {
-        displayVal.operator = btnClick;
-        eval.status = false;
+        if (!displayVal.second) {
+            displayVal.operator = btnClick;
+            eval.status = false;
+        }
     } else if (btn.matches(".equals")) {
         eval.status = true;
         eval.type = "equals"
