@@ -40,8 +40,16 @@ function createNums() {
 }
 
 function displayNewNum(btnClick) {
-    num = Number(btnClick);
+
+    if (eval.decimal === true) {
+        if (!Number(btnClick)) {
+            btnClick = 0 + btnClick;
+        } else {
+            btnClick = '0.' + btnClick;
+        }
+    }
     display.textContent = btnClick;
+    num = Number(btnClick);
     return num;
 }
 
@@ -55,7 +63,16 @@ function updateDisplay(btnClick, num, eval) {
             if (!num) {
                 num = displayNewNum(btnClick);
             } else {
-                num = Number(num.toString() + btnClick);
+                if (btnClick === ".") {
+                    console.log(num);
+                    num = num + btnClick;
+                } else {
+                    if (eval.decimal) {
+                        num = Number(num + (btnClick / 10))
+                    } else {
+                        num = Number(num.toString() + btnClick);
+                    }
+                }
                 display.textContent = num;
             }
             return num;
@@ -96,10 +113,12 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
         if (!displayVal.second) {
             displayVal.operator = btnClick;
             eval.status = false;
+            eval.decimal = false;
         }
     } else if (btn.matches(".equals")) {
         eval.status = true;
         eval.type = "equals"
+        eval.decimal = false;
         if (displayVal.operator) {
             if (displayVal.second === null) {
                 displayVal.second = displayVal.first;
@@ -113,6 +132,7 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
     } else if (btn.matches(".clear")) {
         eval.status = false;
         eval.type = null;
+        eval.decimale = false;
         resetDisplayVal();
         updateDisplay(0, displayVal.first, eval);
     } else if (btn.matches(".negate") || btn.matches(".percent")) {
@@ -124,6 +144,10 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
         if (displayVal[valToUpdate] === null) displayVal[valToUpdate] = displayVal.first;
         displayVal[valToUpdate] = updateDisplay(btnClick, displayVal[valToUpdate] * mod, eval);
         eval.type = initEval;
+    } else if (btn.matches(".decimal")) {
+        eval.type = "num";
+        eval.decimal = true;
+        updateDisplay(btnClick, displayVal[valToUpdate], eval);
     }
     console.log("Button: " + btnClick);
     console.log('First: ' + displayVal.first);
