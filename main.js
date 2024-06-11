@@ -4,10 +4,14 @@ ops["-"] = function(a, b) {return a - b};
 ops["*"] = function(a, b) {return a * b};
 ops["/"] = function(a, b) {return a / b};
 
+function resetDisplayVal() {
+    displayVal.first = 0;
+    displayVal.second = null;
+    displayVal.operator = null;
+}
+
 let displayVal = {};
-displayVal.first = 0;
-displayVal.second = null;
-displayVal.operator = null;
+resetDisplayVal();
 
 function operate(first, second, operator) {
     return ops[operator](first, second);
@@ -89,6 +93,11 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
                 displayVal.second = null;
                 displayVal.operator = null;
         }
+    } else if (btn.matches(".clear")) {
+        eval.status = false;
+        eval.type = null;
+        resetDisplayVal();
+        updateDisplay(0, displayVal.first, eval);
     }
     console.log("Button: " + btnClick);
     console.log('First: ' + displayVal.first);
