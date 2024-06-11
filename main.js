@@ -2,7 +2,13 @@ let ops = {}
 ops["+"] = function(a, b) {return a + b};
 ops["-"] = function(a, b) {return a - b};
 ops["*"] = function(a, b) {return a * b};
-ops["/"] = function(a, b) {return a / b};
+ops["/"] = function(a, b) {
+    if (b === 0) {
+        return null;
+    } else {
+        return a / b;
+    }
+};
 
 function resetDisplayVal() {
     displayVal.first = 0;
@@ -40,7 +46,11 @@ function displayNewNum(btnClick) {
 }
 
 function updateDisplay(btnClick, num, eval) {
-    if (eval.type === "num") {
+    if (errMessage) {
+        display.textContent = errMessage;
+        resetDisplayVal();
+        errMessage = "";
+    } else if (eval.type === "num") {
         if (!eval.status) {
             if (!num) {
                 num = displayNewNum(btnClick);
@@ -66,6 +76,7 @@ createNums();
 const btns = document.querySelectorAll(".btn");
 const display = document.querySelector(".display");
 let eval = {};
+let errMessage;
 btns.forEach((btn) => btn.addEventListener("click", function (e) {
     let btnClick = e.target.textContent;
     let valToUpdate;
@@ -94,6 +105,7 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
                 displayVal.second = displayVal.first;
             }
             displayVal.first = operate(displayVal.first, displayVal.second, displayVal.operator);
+            if (displayVal.first === null) errMessage = "NOPE";
             updateDisplay(btnClick, displayVal.first, eval);
             displayVal.second = null;
             displayVal.operator = null;
@@ -103,11 +115,15 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
         eval.type = null;
         resetDisplayVal();
         updateDisplay(0, displayVal.first, eval);
-    } else if (btn.matches(".negate")) {
-        initEval = eval;
-        eval.type = "equals"
-        displayVal[valToUpdate] = updateDisplay(btnClick, displayVal[valToUpdate] * -1, eval);
-        eval = initEval;
+    } else if (btn.matches(".negate") || btn.matches(".percent")) {
+        if (displayVal[valToUpdate] === null && displayVal.operator) return 0;
+        if (btn.matches(".negate")) mod = -1;
+        if (btn.matches(".percent")) mod = (1/100);
+        initEval = eval.type;
+        eval.type = "equals";
+        if (displayVal[valToUpdate] === null) displayVal[valToUpdate] = displayVal.first;
+        displayVal[valToUpdate] = updateDisplay(btnClick, displayVal[valToUpdate] * mod, eval);
+        eval.type = initEval;
     }
     console.log("Button: " + btnClick);
     console.log('First: ' + displayVal.first);
