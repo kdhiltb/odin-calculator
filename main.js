@@ -145,6 +145,7 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
         displayVal[valToUpdate] = updateDisplay(btnClick, displayVal[valToUpdate] * mod, eval);
         eval.type = initEval;
     } else if (btn.matches(".decimal")) {
+        if (eval.decimal === true) return 0;
         eval.type = "num";
         eval.decimal = true;
         updateDisplay(btnClick, displayVal[valToUpdate], eval);
