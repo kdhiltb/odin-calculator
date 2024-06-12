@@ -4,7 +4,7 @@
 
 .calculator-box {
     border: 1px solid #121212;
-    width: 208px;
+    width: 308px;
     flex-direction: column;
     background: #121212;
 }
@@ -41,10 +41,10 @@
 .btn {
     border: 1px solid #121212;
     background-color: #235347;
-    height: 50px;
-    width: 50px;
+    height: 75px;
+    width: 75px;
     color: white;
-    font-size: 14pt;
+    font-size: 18pt;
 }
 
 .btn:active {
@@ -54,11 +54,11 @@
 .left {
     display: flex;
     flex-direction: column;
-    width: 156px;
+    width: 231px;
 }
 
 .top-row,.bottom-row {
-    width: 156px;
+    width: 231px;
 }
 
 .nums {
@@ -67,14 +67,14 @@
 }
 
 .display {
-    height: 50px;
+    height: 75px;
     flex: 1 1 auto;
     display: flex;
     justify-content: right;
     align-items: center;
     border: 1px solid #121212;
     color: white;
-    font-size: 24pt;
+    font-size: 36pt;
     padding: 0px 3px;
 }
 
@@ -87,7 +87,7 @@
 
 .zero {
     flex: 0 1 auto;
-    width: 102px;
+    width: 152px;
 }
 
 .center {
