@@ -111,20 +111,22 @@ function updateDisplay(btnClick, num, eval) {
 }
 
 function limitDigits(number) {
-    const maxDig = 10;
+    const maxDig = 11;
     let num = Number(number);
+    let wholeNum = Math.floor(num);
     let decimalPlaces;
     if (num % 1 !== 0) {
-        decimalPlaces = maxDig - num.toString().length;
+        decimalPlaces = maxDig - wholeNum.toString().length;
     } else {
         decimalPlaces = 0;
     }
     if (decimalPlaces < 0) decimalPlaces = 0;
-    let wholeNum = Math.floor(num);
+
     let dig = wholeNum.toString().length;
     if (dig > 11) {
         return num.toExponential(2);
     } else {
+        console.log(decimalPlaces);
         return Number(num.toFixed(decimalPlaces));
     }
 }
