@@ -3,7 +3,7 @@
 }
 
 .calculator-box {
-    border: 1px solid black;
+    border: 1px solid #121212;
     width: 208px;
     flex-direction: column;
     background: #121212;
@@ -23,7 +23,7 @@
 
 .top-row .btn {
     background-color: #daf1de;
-    color: black;
+    color: #121212;
 }
 
 .top-row .btn:active {
