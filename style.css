@@ -1,3 +1,7 @@
+* {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 .calculator-box {
     border: 1px solid black;
     width: 208px;
@@ -40,6 +44,7 @@
     height: 50px;
     width: 50px;
     color: white;
+    font-size: 14pt;
 }
 
 .btn:active {
@@ -69,6 +74,7 @@
     align-items: center;
     border: 1px solid #121212;
     color: white;
+    font-size: 24pt;
 }
 
 .ops {
