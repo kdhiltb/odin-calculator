@@ -63,15 +63,10 @@ function updateDisplay(btnClick, num, eval) {
     } else if (eval.type === "num") {
         if (!eval.status) {
             if (!num) {
-                console.log("ITS HERE");
                 if (eval.decimal.status === true) {
-                    console.log("NUM0?: " + num);
-                    console.log("LOG" + btnClick);
-                    console.log("LOG" + num);
                     if (num === 0 && eval.decimal.initial) displayVal.numString = 0;
                     eval.decimal.initial = false;
                     displayVal.numString = displayVal.numString + btnClick;
-                    console.log("HEY: " + displayVal.numString);
                     num = displayVal.numString;
                     display.textContent = num;
                 } else {
@@ -84,7 +79,6 @@ function updateDisplay(btnClick, num, eval) {
                     return;
                 } else {
                     if (eval.decimal.status && eval.decimal.initial) {
-                        console.log("CHECKING: " + num);
                         decNum = btnClick / 10;
                         if (decNum !== 0) {
                             num = num + "." + decNum.toString().substring(2,decNum.length);
@@ -93,19 +87,14 @@ function updateDisplay(btnClick, num, eval) {
                         }
                         eval.decimal.status = false;
                         eval.decimal.initial = false;
-                        console.log("GOT IT");
                     } else {
                         num = num.toString() + btnClick;
                     }
                 }
                 display.textContent = num;
-                console.log("NEW NUM IS: " + num);
-                console.log(eval.decimal.status);
             }
             return num;
         } else {
-            console.log("WHA TIS NUM: " + btnClick);
-            console.log("EVAL: " + eval.decimal.status);
             if (btnClick === ".") {
                 num = displayNewNum("0.");
             } else {
@@ -188,8 +177,6 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
     } else if (btn.matches(".decimal")) {
         if (eval.decimal.status === true) return 0;
         if (eval.status === true) displayVal.first = "0";
-        console.log(displayVal[valToUpdate] + "HI");
-        console.log(valToUpdate);
         eval.type = "num";
         eval.decimal.status = true;
         updateDisplay(btnClick, displayVal[valToUpdate], eval);
