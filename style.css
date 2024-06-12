@@ -8,10 +8,25 @@
     display: flex
 }
 
+.top-row .btn {
+    background-color: #daf1de;
+    color: black;
+}
+
+.ops .btn {
+    background-color: #8eb69b;
+}
+
 .btn {
-    border: 1px solid blue;
+    border: 1px solid #111111;
+    background-color: #235347;
     height: 50px;
     width: 50px;
+    color: white;
+}
+
+.btn:active {
+    background: #797979;
 }
 
 .left {
@@ -35,6 +50,8 @@
     display: flex;
     justify-content: right;
     align-items: center;
+    border-bottom: 1px solid black;
+
 }
 
 .ops {
@@ -45,8 +62,8 @@
 }
 
 .zero {
-    flex: 2 1 auto;
-    width: 103px;
+    flex: 0 1 auto;
+    width: 102px;
 }
 
 .center {
