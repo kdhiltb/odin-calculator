@@ -2,11 +2,11 @@
 
 A simple calculator.
 
+View the live calculator [here](https://kdhiltb.github.io/odin-calculator/)
+
 
 ## Purpose
-Created as part of [The Odin Project](https://www.theodinproject.com/) curriculum.
-
-[Project: Calculator](https://www.theodinproject.com/lessons/foundations-calculator)
+Created as part of [The Odin Project](https://www.theodinproject.com/) curriculum. ([Project: Calculator](https://www.theodinproject.com/lessons/foundations-calculator))
 
 ## Project Accomplishments/ Lessons Learned
 - Created functions to handle the math operations
