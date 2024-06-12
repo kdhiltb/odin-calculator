@@ -50,7 +50,7 @@ function displayNewNum(btnClick) {
         }
     }
     displayVal.numString = btnClick;
-    display.textContent = displayVal.numString;
+    display.textContent = limitDigits(displayVal.numString);
     num = btnClick;
     return num;
 }
@@ -110,6 +110,25 @@ function updateDisplay(btnClick, num, eval) {
 
 }
 
+function limitDigits(number) {
+    const maxDig = 10;
+    let num = Number(number);
+    let decimalPlaces;
+    if (num % 1 !== 0) {
+        decimalPlaces = maxDig - num.toString().length;
+    } else {
+        decimalPlaces = 0;
+    }
+    if (decimalPlaces < 0) decimalPlaces = 0;
+    let wholeNum = Math.floor(num);
+    let dig = wholeNum.toString().length;
+    if (dig > 11) {
+        return num.toExponential(2);
+    } else {
+        return num.toFixed(decimalPlaces);
+    }
+}
+
 createNums();
 
 const btns = document.querySelectorAll(".btn");
@@ -151,7 +170,7 @@ btns.forEach((btn) => btn.addEventListener("click", function (e) {
             if (displayVal.second === null) {
                 displayVal.second = displayVal.first;
             }
-            displayVal.first = operate(displayVal.first, displayVal.second, displayVal.operator);
+            displayVal.first = limitDigits(operate(displayVal.first, displayVal.second, displayVal.operator));
             if (displayVal.first === null) errMessage = "NOPE";
             updateDisplay(btnClick, displayVal.first, eval);
             displayVal.second = 0;
