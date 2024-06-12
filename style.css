@@ -67,9 +67,8 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    border: 1px solid #111111;
+    border: 1px solid #121212;
     color: white;
-
 }
 
 .ops {
