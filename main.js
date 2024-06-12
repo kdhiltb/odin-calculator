@@ -125,7 +125,7 @@ function limitDigits(number) {
     if (dig > 11) {
         return num.toExponential(2);
     } else {
-        return num.toFixed(decimalPlaces);
+        return Number(num.toFixed(decimalPlaces));
     }
 }
 
