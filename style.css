@@ -2,10 +2,19 @@
     border: 1px solid black;
     width: 208px;
     flex-direction: column;
+    background: #121212;
+}
+
+.buttons {
+    background-color: white;
 }
 
 .flex-container {
     display: flex
+}
+
+.top-row {
+    background-color: black;
 }
 
 .top-row .btn {
@@ -13,12 +22,20 @@
     color: black;
 }
 
+.top-row .btn:active {
+    background: #daf1ded9;
+}
+
 .ops .btn {
     background-color: #8eb69b;
 }
 
+.ops .btn:active {
+    background: #8eb69bd9;
+}
+
 .btn {
-    border: 1px solid #111111;
+    border: 1px solid #121212;
     background-color: #235347;
     height: 50px;
     width: 50px;
@@ -26,7 +43,7 @@
 }
 
 .btn:active {
-    background: #797979;
+    background: #235347cc;
 }
 
 .left {
@@ -50,7 +67,8 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    border-bottom: 1px solid black;
+    border: 1px solid #111111;
+    color: white;
 
 }
 
